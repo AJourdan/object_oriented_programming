@@ -7,18 +7,6 @@ attr_accessor :name, :x_coord, :y_coord, :direction
 		@direction = direction
 	end
 
-end
-
-	def read_instruction(input)
-		if input == "L" || input == "R"
-			turn(input)
-		elsif input == "M"
-			move
-		else
-			puts "That isn't an option, bruhh"
-		end
-	end
-
 	def turn(new_direction)
 		if new_direction == "L" && @direction == "N"
 			@direction = "W"
@@ -55,13 +43,41 @@ end
 		end
 	end
 
-	puts "How big should the plateau be?"
-		plateau = gets.chomp
-		
+	def print_coord
+		puts "#{@x_coord} and #{@y_coord}"
+	end
+
+end
+
+def read_instruction(rover, input)
+	if input == "L" || input == "R"
+		rover.turn(input)
+	elsif input == "M"
+		rover.move
+	else
+		puts "That isn't an option, bruhh"
+	end
+end
 
 
-
-
+puts "How big should the plateau be?"
+plateau = gets.to_i
 
 rover1 = Rover.new("Ralph", 1, 2, "N")
 rover2 = Rover.new("Jqebvo", 3, 3, "E")
+
+puts "Rover 1's start position is (#{rover1.x_coord}, #{rover1.y_coord}), facing #{rover1.direction}"
+puts "Rover 1's start position is (#{rover2.x_coord}, #{rover2.y_coord}), facing #{rover2.direction}"
+puts "Input commands for Rover One"
+rover1_commands = gets.chomp.upcase
+rover1_commands.each_char do |command|
+	read_instruction(rover1, command)
+end
+
+puts "Input commands for Rover Two"
+rover2_commands = gets.chomp.upcase
+rover2_commands.each_char do |command|
+	read_instruction(rover2, command)
+end
+rover1.print_coord
+rover2.print_coord

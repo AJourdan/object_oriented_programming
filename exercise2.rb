@@ -67,7 +67,7 @@ rover1 = Rover.new("Ralph", 1, 2, "N")
 rover2 = Rover.new("Jqebvo", 3, 3, "E")
 
 puts "Rover 1's start position is (#{rover1.x_coord}, #{rover1.y_coord}), facing #{rover1.direction}"
-puts "Rover 1's start position is (#{rover2.x_coord}, #{rover2.y_coord}), facing #{rover2.direction}"
+puts "Rover 2's start position is (#{rover2.x_coord}, #{rover2.y_coord}), facing #{rover2.direction}"
 puts "Input commands for Rover One"
 rover1_commands = gets.chomp.upcase
 rover1_commands.each_char do |command|
